@@ -17,11 +17,8 @@ const composeFilePath = path.join(runRoot, 'dotnet', 'docker-compose.yml')
 // AC1 — Dockerfile inspection
 // ---------------------------------------------------------------------------
 describe('AC1: Dockerfile', () => {
-  let dockerfile: string
-
   it('Dockerfile exists at frontend/Dockerfile', () => {
     expect(fs.existsSync(dockerfilePath)).toBe(true)
-    dockerfile = fs.readFileSync(dockerfilePath, 'utf-8')
   })
 
   it('contains a node: base image (stage 1 builder)', () => {
@@ -36,10 +33,10 @@ describe('AC1: Dockerfile', () => {
 
   it('is a two-stage build (both node: and nginx: FROM lines present)', () => {
     const content = fs.readFileSync(dockerfilePath, 'utf-8')
-    const fromLines = content.split('\n').filter((l) => /^\s*FROM\s+/i.test(l))
+    const fromLines = content.split('\n').filter((l: string) => /^\s*FROM\s+/i.test(l))
     expect(fromLines.length).toBeGreaterThanOrEqual(2)
-    const hasNode = fromLines.some((l) => /node:/i.test(l))
-    const hasNginx = fromLines.some((l) => /nginx:/i.test(l))
+    const hasNode = fromLines.some((l: string) => /node:/i.test(l))
+    const hasNginx = fromLines.some((l: string) => /nginx:/i.test(l))
     expect(hasNode).toBe(true)
     expect(hasNginx).toBe(true)
   })
@@ -65,7 +62,7 @@ describe('AC1: Dockerfile', () => {
 
   it('final stage uses nginx:alpine, not node', () => {
     const content = fs.readFileSync(dockerfilePath, 'utf-8')
-    const fromLines = content.split('\n').filter((l) => /^\s*FROM\s+/i.test(l))
+    const fromLines = content.split('\n').filter((l: string) => /^\s*FROM\s+/i.test(l))
     const lastFrom = fromLines[fromLines.length - 1]
     expect(lastFrom).toMatch(/nginx/)
     expect(lastFrom).not.toMatch(/^FROM node:/i)
