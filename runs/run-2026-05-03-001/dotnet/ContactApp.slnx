@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ContactApp.Api/ContactApp.Api.csproj" />
+  <Project Path="ContactApp.Tests/ContactApp.Tests.csproj" />
+</Solution>

@@ -1,0 +1,21 @@
+# .NET build artifacts
+runs/**/bin/
+runs/**/obj/
+runs/**/*.user
+runs/**/*.suo
+runs/**/.vs/
+runs/**/coverage/
+runs/**/coverage2/
+runs/**/*.coverage
+runs/**/*.coveragexml
+runs/**/*.trx
+
+# React / Node
+runs/**/node_modules/
+runs/**/dist/
+runs/**/.env
+runs/**/*.local
+
+# OS
+.DS_Store
+Thumbs.db
