@@ -12,7 +12,6 @@ RUN dotnet restore ContactApp.Api/ContactApp.Api.csproj
 COPY ContactApp.Api/ ContactApp.Api/
 RUN dotnet publish ContactApp.Api/ContactApp.Api.csproj \
     --configuration Release \
-    --no-restore \
     --output /app/publish
 
 # ── Stage 2: runtime ──────────────────────────────────────────────────────────
