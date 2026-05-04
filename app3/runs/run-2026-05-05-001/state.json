@@ -15,8 +15,8 @@
     "architect": { "status": "complete", "iterations": 1 },
     "architect_validation": { "status": "complete", "iterations": 1 },
     "user_review_tech": { "status": "complete" },
-    "tech_lead": { "status": "complete", "iterations": 1 },
-    "tech_lead_validation": { "status": "complete", "iterations": 1 },
+    "tech_lead": { "status": "in_progress", "iterations": 2 },
+    "tech_lead_validation": { "status": "pending", "iterations": 1 },
     "user_review_stories": { "status": "pending" },
     "development": { "status": "pending" },
     "devops": { "status": "pending", "iterations": 0 }

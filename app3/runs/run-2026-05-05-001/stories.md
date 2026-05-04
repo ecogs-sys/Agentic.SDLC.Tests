@@ -3,7 +3,7 @@
 | Field        | Value                  |
 |--------------|------------------------|
 | Run ID       | run-2026-05-05-001     |
-| Version      | 1.0                    |
+| Version      | 1.1                    |
 | Status       | draft                  |
 | Author       | Tech Lead Agent        |
 | Date         | 2026-05-05             |
@@ -20,6 +20,10 @@ Tracks:
 - `react` — frontend at `src/frontend/`
 
 Note: The `docker-compose.yml` and overall stack orchestration is owned jointly. It is placed in the `dotnet` track (STORY-007) because the backend depends on Postgres being healthy and EF migrations run on backend startup; the frontend image is wired in as a service consumer.
+
+### Revision history
+- v1.0 — initial decomposition.
+- v1.1 — extracted all React unit-test acceptance criteria from STORY-009, STORY-011, and STORY-012 into a new dedicated react unit-test story STORY-014. Updated STORY-013 to depend on STORY-014. No existing STORY IDs renumbered.
 
 ---
 
@@ -226,7 +230,7 @@ Initialize the React 18 + Vite + TypeScript project with strict mode, the docume
 | Path          | `src/frontend/src/validation/contactSchema.ts` |
 
 ### Description
-Implement the client-side validation rules for the contact form, exposed as a pure module so unit tests can target it without rendering React.
+Implement the client-side validation rules for the contact form, exposed as a pure module so unit tests can target it without rendering React. Unit tests for this module live in STORY-014.
 
 ### Acceptance Criteria
 1. `contactSchema.ts` exports a `validateContactForm(input)` function (or Zod schema with equivalent behaviour) that returns either a success result or a `Record<fieldName, string>` of inline error messages.
@@ -236,7 +240,6 @@ Implement the client-side validation rules for the contact form, exposed as a pu
    - `phone`: required, trimmed length >= 1, max 50.
    - `subject`: required, trimmed length >= 1, max 200.
    - `message`: required, trimmed length >= 1, max 1000.
-3. Vitest unit tests cover: (a) all-valid input passes; (b) each missing field yields an inline error keyed under that field; (c) `message` of length 1000 is valid and 1001 is invalid; (d) malformed emails (`"foo"`, `"foo@"`, `"foo@bar"`) are rejected and a basic well-formed email is accepted.
 
 ---
 
@@ -272,7 +275,7 @@ Author the multi-stage Dockerfile (`node:20-alpine` build → `nginx:alpine` run
 | Path          | `src/frontend/src/pages/ContactUsPage.tsx`, `src/frontend/src/components/ContactForm.tsx`, `src/frontend/src/components/CharCounter.tsx` |
 
 ### Description
-Build the single page of the SPA: a contact form with five controlled inputs, inline field errors, a live character counter for the message textarea, success and error banners, and a loading state on the submit button.
+Build the single page of the SPA: a contact form with five controlled inputs, inline field errors, a live character counter for the message textarea, success and error banners, and a loading state on the submit button. Unit tests for these components live in STORY-014.
 
 ### Acceptance Criteria
 1. `ContactUsPage` is the only page in the application and renders without making any network request on mount.
@@ -284,8 +287,7 @@ Build the single page of the SPA: a contact form with five controlled inputs, in
 7. On HTTP 200/201 from the API: the form fields are cleared and a success banner is shown on `ContactUsPage`.
 8. On HTTP 400 from the API: the response `errors` map is mapped onto inline field errors (keys `fullName`, `email`, `phone`, `subject`, `message`).
 9. On network failure or HTTP >= 500: a generic error banner with text `"We couldn't send your message. Please try again later."` is displayed.
-10. Vitest + React Testing Library tests cover at minimum: (a) submit blocked when fields empty and inline errors shown; (b) live counter updates as the user types and turns red over the limit; (c) successful submission clears the form and shows the success banner (mocked client); (d) 400 from server maps into inline errors (mocked client); (e) 500 from server shows the generic error banner (mocked client); (f) network error shows the generic error banner.
-11. The page contains no link to or reference to a login or sign-up page.
+10. The page contains no link to or reference to a login or sign-up page.
 
 ---
 
@@ -300,7 +302,7 @@ Build the single page of the SPA: a contact form with five controlled inputs, in
 | Path          | `src/frontend/src/api/contactClient.ts`        |
 
 ### Description
-Implement the typed `submitContact(payload)` wrapper around `fetch` that encodes the contract in TECH-005: success on 200/201, validation errors on 400, generic failure on network errors and 5xx.
+Implement the typed `submitContact(payload)` wrapper around `fetch` that encodes the contract in TECH-005: success on 200/201, validation errors on 400, generic failure on network errors and 5xx. Unit tests for this module live in STORY-014.
 
 ### Acceptance Criteria
 1. `contactClient.ts` exports `submitContact(payload: ContactSubmissionRequest): Promise<SubmitResult>` where `SubmitResult` is a discriminated union with variants `{ kind: 'success', id: string, receivedAt: string }`, `{ kind: 'validation', errors: Record<string, string[]> }`, and `{ kind: 'failure' }`.
@@ -308,19 +310,18 @@ Implement the typed `submitContact(payload)` wrapper around `fetch` that encodes
 3. HTTP 200 or 201: returns `{ kind: 'success', id, receivedAt }` parsed from response JSON.
 4. HTTP 400: returns `{ kind: 'validation', errors }` parsed from response body.
 5. Network error (fetch rejects) or HTTP status >= 500: returns `{ kind: 'failure' }`.
-6. Vitest tests with `fetch` mocked verify each of the four branches (200/201 success, 400 validation, 500 failure, network rejection).
 
 ---
 
 ## STORY-013 — End-to-end smoke test against running compose stack
 
-| Field         | Value                                            |
-|---------------|--------------------------------------------------|
-| Track         | react                                            |
-| Implements    | TECH-005 (end-to-end verification)               |
-| Depends on    | STORY-007, STORY-011, STORY-012                  |
-| Complexity    | M                                                |
-| Path          | `src/frontend/tests/e2e/`                        |
+| Field         | Value                                                       |
+|---------------|-------------------------------------------------------------|
+| Track         | react                                                       |
+| Implements    | TECH-005 (end-to-end verification)                          |
+| Depends on    | STORY-007, STORY-011, STORY-012, STORY-014                  |
+| Complexity    | M                                                           |
+| Path          | `src/frontend/tests/e2e/`                                   |
 
 ### Description
 Add a single Playwright (or equivalent) end-to-end smoke test that boots against the running compose stack, fills out the contact form, submits it, and asserts the success banner appears and a row exists in Postgres.
@@ -333,14 +334,58 @@ Add a single Playwright (or equivalent) end-to-end smoke test that boots against
 
 ---
 
+## STORY-014 — Frontend unit tests (Vitest + React Testing Library)
+
+| Field         | Value                                                                               |
+|---------------|-------------------------------------------------------------------------------------|
+| Track         | react                                                                               |
+| Implements    | TECH-001 (unit-test coverage), TECH-005 (client contract unit-test coverage)        |
+| Depends on    | STORY-009, STORY-011, STORY-012                                                     |
+| Complexity    | M                                                                                   |
+| Path          | `src/frontend/src/**/*.test.ts(x)` (colocated) and/or `src/frontend/tests/unit/`    |
+
+### Description
+Consolidate all Vitest + React Testing Library unit tests for the frontend into a single dedicated story. This story owns the unit-test coverage for the validation schema (STORY-009), the page/form/counter UI components (STORY-011), and the API client (STORY-012). It is intentionally separate from the end-to-end story (STORY-013) so frontend unit tests can be added and run without a running compose stack and so coverage is reviewed as one cohesive deliverable.
+
+The test runner (`vitest`) and `@testing-library/react` are already declared as dev dependencies in STORY-008. This story wires the `npm run test` script (if not already present) so all unit tests below run via a single command.
+
+### Acceptance Criteria
+
+**Test runner setup**
+1. `npm run test` is defined in `src/frontend/package.json` and invokes Vitest in run-mode (non-watch). It exits non-zero if any test fails.
+2. All tests below are discoverable and run by the single `npm run test` command.
+
+**Validation schema unit tests (formerly STORY-009 AC3)**
+3. A Vitest test verifies that an all-valid input passes `validateContactForm` from STORY-009 with no errors.
+4. A Vitest test verifies that for each field (`fullName`, `email`, `phone`, `subject`, `message`) being missing/empty, `validateContactForm` returns an inline error keyed under that field.
+5. A Vitest test verifies that a `message` of length 1000 is valid and a `message` of length 1001 is invalid.
+6. A Vitest test verifies that malformed emails (`"foo"`, `"foo@"`, `"foo@bar"`) are rejected and a basic well-formed email (e.g. `"jane@example.com"`) is accepted.
+
+**ContactUsPage / ContactForm / CharCounter component tests (formerly STORY-011 AC10)**
+7. A React Testing Library test verifies that submitting the form with all fields empty is blocked (the API client is not called) and inline error messages are shown for each required field.
+8. A React Testing Library test verifies that as the user types into the message textarea the live `CharCounter` updates, and that when length exceeds 1000 the counter visually flips to its red/over-limit state.
+9. A React Testing Library test (with the API client mocked to return `{ kind: 'success', ... }`) verifies that on a valid submission the form fields are cleared and the success banner becomes visible on `ContactUsPage`.
+10. A React Testing Library test (with the API client mocked to return `{ kind: 'validation', errors: { email: ['Email is not a valid format.'] } }`) verifies that the returned server-side errors are mapped onto inline field errors in the form.
+11. A React Testing Library test (with the API client mocked to return `{ kind: 'failure' }` simulating an HTTP 500) verifies that the generic error banner with text `"We couldn't send your message. Please try again later."` is displayed.
+12. A React Testing Library test (with the API client mocked to reject as if the network failed) verifies that the same generic error banner is displayed.
+
+**API client unit tests (formerly STORY-012 AC6)**
+13. A Vitest test with `fetch` mocked to return HTTP 201 with body `{ id, receivedAt }` verifies that `submitContact` resolves to `{ kind: 'success', id, receivedAt }`.
+14. A Vitest test with `fetch` mocked to return HTTP 200 with body `{ id, receivedAt }` verifies that `submitContact` resolves to `{ kind: 'success', id, receivedAt }`.
+15. A Vitest test with `fetch` mocked to return HTTP 400 with body `{ errors: { ... } }` verifies that `submitContact` resolves to `{ kind: 'validation', errors }`.
+16. A Vitest test with `fetch` mocked to return HTTP 500 verifies that `submitContact` resolves to `{ kind: 'failure' }`.
+17. A Vitest test with `fetch` mocked to reject (network error) verifies that `submitContact` resolves to `{ kind: 'failure' }` and does not throw.
+
+---
+
 ## Coverage Self-Check
 
-| TECH-ID  | Covered by stories                                           |
-|----------|--------------------------------------------------------------|
-| TECH-001 | STORY-008, STORY-009, STORY-010, STORY-011, STORY-012        |
-| TECH-002 | STORY-002, STORY-003                                         |
-| TECH-003 | STORY-001                                                    |
-| TECH-004 | STORY-004, STORY-005, STORY-007                              |
-| TECH-005 | STORY-003, STORY-012, STORY-013                              |
+| TECH-ID  | Covered by stories                                                             |
+|----------|--------------------------------------------------------------------------------|
+| TECH-001 | STORY-008, STORY-009, STORY-010, STORY-011, STORY-012, STORY-014               |
+| TECH-002 | STORY-002, STORY-003                                                           |
+| TECH-003 | STORY-001                                                                      |
+| TECH-004 | STORY-004, STORY-005, STORY-007                                                |
+| TECH-005 | STORY-003, STORY-012, STORY-013, STORY-014                                     |
 
-All five TECH-IDs are covered by at least one story. Each story belongs to exactly one track. React stories that depend on backend behaviour list the corresponding dotnet story under `Depends on`.
+All five TECH-IDs are covered by at least one story. Each story belongs to exactly one track. React stories that depend on backend behaviour list the corresponding dotnet story under `Depends on`. The new STORY-014 consolidates all React unit-test acceptance criteria previously scattered across STORY-009, STORY-011, and STORY-012; STORY-013 (E2E) now also depends on STORY-014 so unit tests are green before the compose-level smoke test runs.
