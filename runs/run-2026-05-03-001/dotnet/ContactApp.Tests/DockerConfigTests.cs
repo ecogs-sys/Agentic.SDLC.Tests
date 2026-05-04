@@ -9,7 +9,7 @@ namespace ContactApp.Tests;
 ///
 /// Coverage:
 ///   AC1  — Dockerfile produces an image whose default command starts the API on http://+:8080
-///   AC2  — api service healthcheck targets GET /api/health using wget
+///   AC2  — api service healthcheck targets GET /api/health using curl
 ///   AC3  — structural compose checks (port 8080, depends_on db with service_healthy)
 ///   AC4  — api service declares all required environment variables
 /// </summary>
@@ -218,27 +218,27 @@ public class DockerConfigTests
     }
 
     [Fact]
-    public void AC2_ApiService_HealthcheckDoesNotUseCurl()
+    public void AC2_ApiService_HealthcheckUsesCurl()
     {
         // Arrange
         var api = GetApiService();
         var healthcheck = (YamlMappingNode)api["healthcheck"];
         var testLine = GetHealthcheckTestLine(healthcheck);
 
-        // Assert — curl is not available in the aspnet runtime image by default
-        Assert.DoesNotContain("curl", testLine, StringComparison.OrdinalIgnoreCase);
+        // Assert — curl is installed in the runtime image and used for the healthcheck
+        Assert.Contains("curl", testLine, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
-    public void AC2_ApiService_HealthcheckUsesWget()
+    public void AC2_ApiService_HealthcheckDoesNotUseWget()
     {
         // Arrange
         var api = GetApiService();
         var healthcheck = (YamlMappingNode)api["healthcheck"];
         var testLine = GetHealthcheckTestLine(healthcheck);
 
-        // Assert — wget is available in the aspnet Alpine-based runtime image
-        Assert.Contains("wget", testLine, StringComparison.OrdinalIgnoreCase);
+        // Assert — wget is not used (curl is the installed tool)
+        Assert.DoesNotContain("wget", testLine, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

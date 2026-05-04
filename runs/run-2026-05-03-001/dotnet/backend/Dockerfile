@@ -18,6 +18,9 @@ RUN dotnet publish ContactApp.Api/ContactApp.Api.csproj \
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
+# Install curl for the compose healthcheck (not present in the minimal aspnet image).
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
 # Copy published output from the build stage.
 COPY --from=build /app/publish .
 
