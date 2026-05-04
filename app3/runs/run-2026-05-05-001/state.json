@@ -2,7 +2,7 @@
   "run_id": "run-2026-05-05-001",
   "branch": "agentic-sdlc/run-2026-05-05-001",
   "parent_branch": "agentic-sdlc/run-2026-05-04-001",
-  "current_stage": "ba",
+  "current_stage": "architect",
   "spec_frozen": false,
   "src_paths": {
     "backend": "src/backend",
@@ -11,7 +11,7 @@
   "stages": {
     "ba": { "status": "complete", "iterations": 2 },
     "ba_validation": { "status": "complete", "iterations": 2 },
-    "user_review_req": { "status": "pending" },
+    "user_review_req": { "status": "complete" },
     "architect": { "status": "pending", "iterations": 0 },
     "architect_validation": { "status": "pending", "iterations": 0 },
     "user_review_tech": { "status": "pending" },
