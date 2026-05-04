@@ -1,0 +1,20 @@
+# .NET build artifacts
+**/bin/
+**/obj/
+*.user
+.vs/
+
+# React build artifacts
+node_modules/
+dist/
+
+# Test coverage
+**/coverage/
+**/coverage*/
+
+# Environment — never commit secrets
+.env
+
+# IDE
+.idea/
+*.suo

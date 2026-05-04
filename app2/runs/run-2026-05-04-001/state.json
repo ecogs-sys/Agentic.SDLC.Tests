@@ -1,0 +1,24 @@
+{
+  "run_id": "run-2026-05-04-001",
+  "branch": "agentic-sdlc/run-2026-05-04-001",
+  "current_stage": "ba",
+  "spec_frozen": false,
+  "src_paths": {
+    "backend": "src/backend",
+    "frontend": "src/frontend"
+  },
+  "stages": {
+    "ba": { "status": "in_progress", "iterations": 0 },
+    "ba_validation": { "status": "pending", "iterations": 0 },
+    "user_review_req": { "status": "pending" },
+    "architect": { "status": "pending", "iterations": 0 },
+    "architect_validation": { "status": "pending", "iterations": 0 },
+    "user_review_tech": { "status": "pending" },
+    "tech_lead": { "status": "pending", "iterations": 0 },
+    "tech_lead_validation": { "status": "pending", "iterations": 0 },
+    "user_review_stories": { "status": "pending" },
+    "development": { "status": "pending" },
+    "devops": { "status": "pending" }
+  },
+  "stories": {}
+}
