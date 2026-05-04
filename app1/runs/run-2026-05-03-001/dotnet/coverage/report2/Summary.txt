@@ -1,0 +1,29 @@
+Summary
+  Generated on: 3/05/2026 - 2:25:28 pm
+  Coverage date: 3/05/2026 - 2:25:05 pm - 3/05/2026 - 2:25:08 pm
+  Parser: MultiReport (2x Cobertura)
+  Assemblies: 1
+  Classes: 7
+  Files: 7
+  Line coverage: 0%
+  Covered lines: 0
+  Uncovered lines: 562
+  Coverable lines: 562
+  Total lines: 909
+  Branch coverage: 0% (0 of 210)
+  Covered branches: 0
+  Total branches: 210
+  Method coverage: 0% (0 of 38)
+  Full method coverage: 0% (0 of 38)
+  Covered methods: 0
+  Fully covered methods: 0
+  Total methods: 38
+
+ContactApp.Api                                                 0%
+  ContactApp.Api.Data.ContactDbContext                         0%
+  ContactApp.Api.Data.ContactSubmission                        0%
+  ContactApp.Api.Migrations.ContactDbContextModelSnapshot      0%
+  ContactApp.Api.Migrations.InitialCreate                      0%
+  Microsoft.AspNetCore.OpenApi.Generated                       0%
+  Program                                                      0%
+  System.Runtime.CompilerServices                              0%

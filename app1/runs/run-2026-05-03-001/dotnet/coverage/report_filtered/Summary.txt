@@ -1,0 +1,28 @@
+Summary
+  Generated on: 3/05/2026 - 2:38:20 pm
+  Coverage date: 3/05/2026 - 2:25:05 pm - 3/05/2026 - 2:37:56 pm
+  Parser: MultiReport (5x Cobertura)
+  Assemblies: 1
+  Classes: 6
+  Files: 6
+  Line coverage: 76.2%
+  Covered lines: 154
+  Uncovered lines: 48
+  Coverable lines: 202
+  Total lines: 332
+  Branch coverage: 75% (33 of 44)
+  Covered branches: 33
+  Total branches: 44
+  Method coverage: 100% (22 of 22)
+  Full method coverage: 81.8% (18 of 22)
+  Covered methods: 22
+  Fully covered methods: 18
+  Total methods: 22
+
+ContactApp.Api                                     76.2%
+  ContactApp.Api.Data.ContactDbContext              100%
+  ContactApp.Api.Data.ContactSubmission             100%
+  ContactApp.Api.Endpoints.ContactEndpoints        83.7%
+  ContactApp.Api.Models.ContactSubmissionRequest    100%
+  ContactApp.Api.Validation.ContactValidator        100%
+  Program                                          39.1%

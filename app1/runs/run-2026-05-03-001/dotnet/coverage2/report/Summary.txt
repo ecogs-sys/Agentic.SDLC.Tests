@@ -1,0 +1,29 @@
+Summary
+  Generated on: 3/05/2026 - 2:26:12 pm
+  Coverage date: 3/05/2026 - 2:26:03 pm
+  Parser: Cobertura
+  Assemblies: 1
+  Classes: 7
+  Files: 7
+  Line coverage: 25.9%
+  Covered lines: 146
+  Uncovered lines: 416
+  Coverable lines: 562
+  Total lines: 909
+  Branch coverage: 0% (0 of 210)
+  Covered branches: 0
+  Total branches: 210
+  Method coverage: 31.5% (12 of 38)
+  Full method coverage: 31.5% (12 of 38)
+  Covered methods: 12
+  Fully covered methods: 12
+  Total methods: 38
+
+ContactApp.Api                                              25.9%
+  ContactApp.Api.Data.ContactDbContext                       100%
+  ContactApp.Api.Data.ContactSubmission                      100%
+  ContactApp.Api.Migrations.ContactDbContextModelSnapshot    100%
+  ContactApp.Api.Migrations.InitialCreate                    100%
+  Microsoft.AspNetCore.OpenApi.Generated                       0%
+  Program                                                      0%
+  System.Runtime.CompilerServices                              0%

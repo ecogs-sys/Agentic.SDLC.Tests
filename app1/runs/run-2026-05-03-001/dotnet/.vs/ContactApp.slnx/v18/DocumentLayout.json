@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Work\\ecogs\\projects\\Agentic.SDLC.Tests\\app1\\runs\\run-2026-05-03-001\\dotnet\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBB6C5-F5F4-9BA9-A7B3-8BFA506B9AAE}|ContactApp.Api\\ContactApp.Api.csproj|c:\\work\\ecogs\\projects\\agentic.sdlc.tests\\app1\\runs\\run-2026-05-03-001\\dotnet\\contactapp.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{BDFBB6C5-F5F4-9BA9-A7B3-8BFA506B9AAE}|ContactApp.Api\\ContactApp.Api.csproj|solutionrelative:contactapp.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Work\\ecogs\\projects\\Agentic.SDLC.Tests\\app1\\runs\\run-2026-05-03-001\\dotnet\\ContactApp.Api\\Dockerfile",
+              "RelativeDocumentMoniker": "ContactApp.Api\\Dockerfile",
+              "ToolTip": "C:\\Work\\ecogs\\projects\\Agentic.SDLC.Tests\\app1\\runs\\run-2026-05-03-001\\dotnet\\ContactApp.Api\\Dockerfile",
+              "RelativeToolTip": "ContactApp.Api\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-03T22:44:18.169Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
