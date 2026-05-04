@@ -8,8 +8,8 @@
     "frontend": "src/frontend"
   },
   "stages": {
-    "ba": { "status": "in_progress", "iterations": 0 },
-    "ba_validation": { "status": "pending", "iterations": 0 },
+    "ba": { "status": "complete", "iterations": 1 },
+    "ba_validation": { "status": "complete", "iterations": 1 },
     "user_review_req": { "status": "pending" },
     "architect": { "status": "pending", "iterations": 0 },
     "architect_validation": { "status": "pending", "iterations": 0 },
