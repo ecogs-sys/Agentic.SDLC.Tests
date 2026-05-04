@@ -12,7 +12,7 @@
     "ba": { "status": "complete", "iterations": 2 },
     "ba_validation": { "status": "complete", "iterations": 2 },
     "user_review_req": { "status": "complete" },
-    "architect": { "status": "pending", "iterations": 0 },
+    "architect": { "status": "in_progress", "iterations": 1 },
     "architect_validation": { "status": "pending", "iterations": 0 },
     "user_review_tech": { "status": "pending" },
     "tech_lead": { "status": "pending", "iterations": 0 },
