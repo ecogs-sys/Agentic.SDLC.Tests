@@ -22,7 +22,7 @@
     "devops": { "status": "pending", "iterations": 0 }
   },
   "stories": {
-    "STORY-001": { "track": "dotnet", "status": "awaiting_docker", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-001": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 2, "fix_iterations": 0 },
     "STORY-002": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-003": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 2, "fix_iterations": 1 },
     "STORY-004": { "track": "dotnet", "status": "pending", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
