@@ -23,6 +23,16 @@ builder.Services.AddScoped<IValidator<ContactSubmissionRequest>, ContactSubmissi
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
+// CORS — allow the configured frontend origin (FRONTEND_ORIGIN env var; default http://localhost:3000)
+var frontendOrigin = builder.Configuration["FRONTEND_ORIGIN"] ?? "http://localhost:3000";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontendPolicy", policy =>
+        policy.WithOrigins(frontendOrigin)
+              .WithMethods("POST")
+              .WithHeaders("Content-Type"));
+});
+
 // Health checks (DevOps smoke test + Docker Compose healthcheck at /healthz)
 builder.Services.AddHealthChecks();
 
@@ -53,13 +63,17 @@ using (var scope = app.Services.CreateScope())
 // Global exception handler must be first in the pipeline.
 app.UseExceptionHandler();
 
+// CORS must appear before endpoint routing / controllers.
+app.UseCors("FrontendPolicy");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
-app.MapHealthChecks("/health");
+// Health check at /healthz only (Docker Compose healthcheck + DevOps smoke test).
+// /health alias is not part of the spec; only /healthz is required.
 app.MapHealthChecks("/healthz");
 
 app.MapControllers();
