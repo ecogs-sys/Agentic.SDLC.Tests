@@ -176,7 +176,7 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
           aria-invalid={!!errors.message}
           rows={6}
         />
-        <CharCounter current={fields.message.length} max={MESSAGE_MAX} />
+        <CharCounter id="message-counter" current={fields.message.length} max={MESSAGE_MAX} />
         {errors.message && (
           <span id="message-error" role="alert">
             {errors.message}
