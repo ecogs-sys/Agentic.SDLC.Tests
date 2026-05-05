@@ -31,7 +31,7 @@
     "STORY-007": { "track": "dotnet", "status": "pending", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
     "STORY-008": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-009": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
-    "STORY-010": { "track": "react", "status": "reviewer_passed", "reviewer_iterations": 1, "test_reviewer_iterations": 0, "fix_iterations": 0 },
+    "STORY-010": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-011": { "track": "react", "status": "pending", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
     "STORY-012": { "track": "react", "status": "pending", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
     "STORY-013": { "track": "react", "status": "pending", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
