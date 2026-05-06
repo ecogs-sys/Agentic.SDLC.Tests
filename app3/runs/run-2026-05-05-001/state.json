@@ -2,7 +2,7 @@
   "run_id": "run-2026-05-05-001",
   "branch": "agentic-sdlc/run-2026-05-05-001",
   "parent_branch": "agentic-sdlc/run-2026-05-04-001",
-  "current_stage": "development",
+  "current_stage": "devops",
   "spec_frozen": true,
   "src_paths": {
     "backend": "src/backend",
@@ -18,8 +18,8 @@
     "tech_lead": { "status": "complete", "iterations": 2 },
     "tech_lead_validation": { "status": "complete", "iterations": 2 },
     "user_review_stories": { "status": "complete" },
-    "development": { "status": "in_progress" },
-    "devops": { "status": "pending", "iterations": 0 }
+    "development": { "status": "complete" },
+    "devops": { "status": "in_progress", "iterations": 0 }
   },
   "stories": {
     "STORY-001": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 2, "fix_iterations": 0 },
@@ -34,7 +34,7 @@
     "STORY-010": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-011": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-012": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
-    "STORY-013": { "track": "react", "status": "in_progress", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
+    "STORY-013": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-014": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 }
   }
 }
