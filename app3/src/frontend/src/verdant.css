@@ -1,0 +1,296 @@
+/* ============================================================
+   VERDANT DESIGN SYSTEM — colors_and_type.css
+   All CSS custom properties for colors, typography, spacing,
+   radius, shadow, and semantic tokens.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ──────────────────────────────────────────
+   BASE COLOR SCALES
+   ────────────────────────────────────────── */
+:root {
+  /* Green scale */
+  --green-50:  #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  /* Neutral (green-tinted grays) */
+  --neutral-50:  #f8faf9;
+  --neutral-100: #f1f5f2;
+  --neutral-200: #e2e8e4;
+  --neutral-300: #c8d4cb;
+  --neutral-400: #9aada0;
+  --neutral-500: #6b8070;
+  --neutral-600: #4f6456;
+  --neutral-700: #3a4d40;
+  --neutral-800: #263328;
+  --neutral-900: #17211a;
+  --neutral-950: #0d120f;
+
+  /* Accent — Red */
+  --accent-50:  #fff1f2;
+  --accent-100: #ffe4e6;
+  --accent-200: #fecdd3;
+  --accent-300: #fda4af;
+  --accent-400: #fb7185;
+  --accent-500: #f43f5e;
+  --accent-600: #e11d48;
+  --accent-700: #be123c;
+  --accent-800: #9f1239;
+  --accent-900: #881337;
+  --accent-950: #4c0519;
+
+  /* Amber — warnings */
+  --amber-50:  #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+
+  /* Blue — informational */
+  --blue-50:  #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+}
+
+/* ──────────────────────────────────────────
+   LIGHT MODE SEMANTIC TOKENS
+   ────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-base:    #f8faf9;
+  --bg-surface: #ffffff;
+  --bg-subtle:  #f1f5f2;
+  --bg-muted:   #e2e8e4;
+
+  /* Foregrounds */
+  --fg-1: #17211a;
+  --fg-2: #4f6456;
+  --fg-3: #6b8070;
+  --fg-invert: #ffffff;
+
+  /* Border */
+  --border:        #d4dbd6;
+  --border-strong: #9aada0;
+  --border-focus:  #15803d;
+
+  /* Primary (green) */
+  --color-primary:        #15803d;
+  --color-primary-hover:  #166534;
+  --color-primary-active: #14532d;
+  --color-primary-subtle: #dcfce7;
+  --color-primary-fg:     #ffffff;
+
+  /* Accent (red) */
+  --color-accent:        #e11d48;
+  --color-accent-hover:  #be123c;
+  --color-accent-subtle: #ffe4e6;
+  --color-accent-fg:     #ffffff;
+
+  /* Semantic */
+  --color-success:        #15803d;
+  --color-success-subtle: #dcfce7;
+  --color-success-fg:     #14532d;
+
+  --color-warning:        #d97706;
+  --color-warning-subtle: #fef3c7;
+  --color-warning-fg:     #92400e;
+
+  --color-error:          #dc2626;
+  --color-error-subtle:   #ffe4e6;
+  --color-error-fg:       #9f1239;
+
+  --color-info:           #2563eb;
+  --color-info-subtle:    #dbeafe;
+  --color-info-fg:        #1e40af;
+
+  /* Interactive states */
+  --bg-hover:    rgba(21, 128, 61, 0.06);
+  --bg-active:   rgba(21, 128, 61, 0.12);
+  --bg-selected: rgba(21, 128, 61, 0.10);
+
+  /* Overlay */
+  --overlay: rgba(13, 18, 15, 0.5);
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-2: 0 4px 12px rgba(0,0,0,0.12);
+  --shadow-3: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+/* ──────────────────────────────────────────
+   DARK MODE SEMANTIC TOKENS
+   ────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-base:    #0d120f;
+  --bg-surface: #111714;
+  --bg-subtle:  #192119;
+  --bg-muted:   #263328;
+
+  --fg-1: #e8ede9;
+  --fg-2: #9aada0;
+  --fg-3: #6b8070;
+  --fg-invert: #17211a;
+
+  --border:        #2a3d2e;
+  --border-strong: #3a4d40;
+  --border-focus:  #22c55e;
+
+  --color-primary:        #22c55e;
+  --color-primary-hover:  #4ade80;
+  --color-primary-active: #86efac;
+  --color-primary-subtle: #14532d;
+  --color-primary-fg:     #052e16;
+
+  --color-accent:        #fb7185;
+  --color-accent-hover:  #fda4af;
+  --color-accent-subtle: #4c0519;
+  --color-accent-fg:     #fff1f2;
+
+  --color-success:        #4ade80;
+  --color-success-subtle: #14532d;
+  --color-success-fg:     #86efac;
+
+  --color-warning:        #fbbf24;
+  --color-warning-subtle: #451a03;
+  --color-warning-fg:     #fde68a;
+
+  --color-error:          #fb7185;
+  --color-error-subtle:   #4c0519;
+  --color-error-fg:       #fda4af;
+
+  --color-info:           #60a5fa;
+  --color-info-subtle:    #1e3a5f;
+  --color-info-fg:        #bfdbfe;
+
+  --bg-hover:    rgba(34, 197, 94, 0.08);
+  --bg-active:   rgba(34, 197, 94, 0.15);
+  --bg-selected: rgba(34, 197, 94, 0.12);
+
+  --overlay: rgba(0, 0, 0, 0.65);
+
+  --shadow-1: 0 1px 2px rgba(0,30,10,0.3);
+  --shadow-2: 0 4px 12px rgba(0,30,10,0.4);
+  --shadow-3: 0 8px 24px rgba(0,30,10,0.5);
+}
+
+/* ──────────────────────────────────────────
+   SPACING SCALE
+   ────────────────────────────────────────── */
+:root {
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+}
+
+/* ──────────────────────────────────────────
+   BORDER RADIUS SCALE
+   ────────────────────────────────────────── */
+:root {
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius-lg:  8px;
+  --radius-xl:  12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+}
+
+/* ──────────────────────────────────────────
+   TYPOGRAPHY SCALE
+   ────────────────────────────────────────── */
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs:   11px;
+  --text-sm:   12px;
+  --text-base: 14px;
+  --text-md:   16px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+  --text-3xl:  48px;
+
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --leading-tight:   1.25;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.08em;
+}
+
+/* ──────────────────────────────────────────
+   SEMANTIC TYPE TOKENS
+   ────────────────────────────────────────── */
+:root {
+  --h1-size:    var(--text-2xl);
+  --h1-weight:  var(--weight-bold);
+  --h1-leading: var(--leading-tight);
+
+  --h2-size:    var(--text-xl);
+  --h2-weight:  var(--weight-semibold);
+
+  --h3-size:    var(--text-lg);
+  --h3-weight:  var(--weight-semibold);
+
+  --body-size:    var(--text-base);
+  --body-weight:  var(--weight-normal);
+  --body-leading: var(--leading-normal);
+
+  --label-size:    var(--text-sm);
+  --label-weight:  var(--weight-medium);
+
+  --caption-size:   var(--text-xs);
+  --caption-weight: var(--weight-normal);
+}
+
+/* ──────────────────────────────────────────
+   BASE RESET / GLOBAL STYLES
+   ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--fg-1);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

@@ -19,3 +19,26 @@ runs/**/*.local
 # OS
 .DS_Store
 Thumbs.db
+
+# .NET build artifacts (source)
+**/bin/
+**/obj/
+*.user
+.vs/
+
+# React build artifacts (source)
+node_modules/
+dist/
+
+# Test coverage
+**/coverage*/
+
+# Logs
+*.log
+
+# Environment — never commit secrets
+.env
+
+# IDE
+.idea/
+*.suo

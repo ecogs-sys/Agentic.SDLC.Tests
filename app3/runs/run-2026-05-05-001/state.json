@@ -1,0 +1,40 @@
+{
+  "run_id": "run-2026-05-05-001",
+  "branch": "agentic-sdlc/run-2026-05-05-001",
+  "parent_branch": "agentic-sdlc/run-2026-05-04-001",
+  "current_stage": "complete",
+  "spec_frozen": true,
+  "src_paths": {
+    "backend": "src/backend",
+    "frontend": "src/frontend"
+  },
+  "stages": {
+    "ba": { "status": "complete", "iterations": 2 },
+    "ba_validation": { "status": "complete", "iterations": 2 },
+    "user_review_req": { "status": "complete" },
+    "architect": { "status": "complete", "iterations": 1 },
+    "architect_validation": { "status": "complete", "iterations": 1 },
+    "user_review_tech": { "status": "complete" },
+    "tech_lead": { "status": "complete", "iterations": 2 },
+    "tech_lead_validation": { "status": "complete", "iterations": 2 },
+    "user_review_stories": { "status": "complete" },
+    "development": { "status": "complete" },
+    "devops": { "status": "complete", "iterations": 2 }
+  },
+  "stories": {
+    "STORY-001": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 2, "fix_iterations": 0 },
+    "STORY-002": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-003": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 2, "fix_iterations": 1 },
+    "STORY-004": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-005": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-006": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-007": { "track": "dotnet", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-008": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-009": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-010": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-011": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-012": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-013": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
+    "STORY-014": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 }
+  }
+}
