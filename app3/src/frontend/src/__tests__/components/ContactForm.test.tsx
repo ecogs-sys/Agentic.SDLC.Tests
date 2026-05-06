@@ -122,8 +122,7 @@ describe('AC-2: CharCounter updates live and turns red when over 1000 chars', ()
     fireEvent.change(textarea, { target: { value: 'a'.repeat(1000) } })
 
     expect(counter).toHaveTextContent('1000 / 1000')
-    // style.color should be empty / not red when at exactly the limit
-    expect(counter).not.toHaveStyle({ color: 'red' })
+    expect(counter).not.toHaveClass('char-counter--over')
   })
 
   it('edge case: counter turns red when input length exceeds 1000', () => {
@@ -135,8 +134,7 @@ describe('AC-2: CharCounter updates live and turns red when over 1000 chars', ()
     fireEvent.change(textarea, { target: { value: 'a'.repeat(1001) } })
 
     expect(counter).toHaveTextContent('1001 / 1000')
-    // jsdom normalises 'red' -> 'rgb(255, 0, 0)' in computed styles
-    expect(counter).toHaveStyle({ color: 'rgb(255, 0, 0)' })
+    expect(counter).toHaveClass('char-counter--over')
   })
 
   it('edge case: counter returns to normal color after removing excess characters', () => {
@@ -147,10 +145,10 @@ describe('AC-2: CharCounter updates live and turns red when over 1000 chars', ()
 
     // Set to 1001 chars first, then drop back to 1000
     fireEvent.change(textarea, { target: { value: 'a'.repeat(1001) } })
-    expect(counter).toHaveStyle({ color: 'rgb(255, 0, 0)' })
+    expect(counter).toHaveClass('char-counter--over')
 
     fireEvent.change(textarea, { target: { value: 'a'.repeat(1000) } })
-    expect(counter).not.toHaveStyle({ color: 'rgb(255, 0, 0)' })
+    expect(counter).not.toHaveClass('char-counter--over')
   })
 })
 

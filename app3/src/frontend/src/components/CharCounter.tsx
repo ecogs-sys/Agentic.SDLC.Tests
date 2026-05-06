@@ -11,7 +11,7 @@ function CharCounter({ current, max, id }: CharCounterProps) {
     <span
       id={id}
       data-testid="char-counter"
-      style={{ color: isOver ? 'red' : undefined, fontSize: '0.85em' }}
+      className={`char-counter${isOver ? ' char-counter--over' : ''}`}
     >
       {current} / {max}
     </span>

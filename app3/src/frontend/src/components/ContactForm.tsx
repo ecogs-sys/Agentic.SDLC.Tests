@@ -34,7 +34,6 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
     const updated = { ...fields, [name]: value }
     setFields(updated)
 
-    // Field-level validation on change
     const allErrors = validateContactForm(updated)
     setErrors(prev => ({
       ...prev,
@@ -45,7 +44,6 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    // Full validation before submission
     const allErrors = validateContactForm(fields)
     if (Object.keys(allErrors).length > 0) {
       setErrors(allErrors)
@@ -62,7 +60,6 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
         setErrors({})
         onSuccess()
       } else if (result.kind === 'validation') {
-        // Map server-side errors (string[]) to first message per field
         const fieldErrors: ContactFormErrors = {}
         for (const [key, messages] of Object.entries(result.errors)) {
           const k = key as keyof ContactFormErrors
@@ -83,10 +80,11 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div>
-        <label htmlFor="fullName">Full Name</label>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate>
+      <div className="contact-form__field">
+        <label className="contact-form__label" htmlFor="fullName">Full Name</label>
         <input
+          className="contact-form__input"
           id="fullName"
           name="fullName"
           type="text"
@@ -97,15 +95,16 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
           aria-invalid={!!errors.fullName}
         />
         {errors.fullName && (
-          <span id="fullName-error" role="alert">
+          <span id="fullName-error" role="alert" className="contact-form__error">
             {errors.fullName}
           </span>
         )}
       </div>
 
-      <div>
-        <label htmlFor="email">Email</label>
+      <div className="contact-form__field">
+        <label className="contact-form__label" htmlFor="email">Email</label>
         <input
+          className="contact-form__input"
           id="email"
           name="email"
           type="email"
@@ -116,15 +115,16 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
           aria-invalid={!!errors.email}
         />
         {errors.email && (
-          <span id="email-error" role="alert">
+          <span id="email-error" role="alert" className="contact-form__error">
             {errors.email}
           </span>
         )}
       </div>
 
-      <div>
-        <label htmlFor="phone">Phone</label>
+      <div className="contact-form__field">
+        <label className="contact-form__label" htmlFor="phone">Phone</label>
         <input
+          className="contact-form__input"
           id="phone"
           name="phone"
           type="tel"
@@ -135,15 +135,16 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
           aria-invalid={!!errors.phone}
         />
         {errors.phone && (
-          <span id="phone-error" role="alert">
+          <span id="phone-error" role="alert" className="contact-form__error">
             {errors.phone}
           </span>
         )}
       </div>
 
-      <div>
-        <label htmlFor="subject">Subject</label>
+      <div className="contact-form__field">
+        <label className="contact-form__label" htmlFor="subject">Subject</label>
         <input
+          className="contact-form__input"
           id="subject"
           name="subject"
           type="text"
@@ -154,39 +155,42 @@ function ContactForm({ onSuccess, onServerErrors, onFailure }: ContactFormProps)
           aria-invalid={!!errors.subject}
         />
         {errors.subject && (
-          <span id="subject-error" role="alert">
+          <span id="subject-error" role="alert" className="contact-form__error">
             {errors.subject}
           </span>
         )}
       </div>
 
-      <div>
-        <label htmlFor="message">Message</label>
+      <div className="contact-form__field">
+        <label className="contact-form__label" htmlFor="message">Message</label>
         <textarea
+          className="contact-form__textarea"
           id="message"
           name="message"
           value={fields.message}
           onChange={handleChange}
           disabled={isSubmitting}
-          aria-describedby={
-            errors.message
-              ? 'message-error'
-              : 'message-counter'
-          }
+          aria-describedby={errors.message ? 'message-error' : 'message-counter'}
           aria-invalid={!!errors.message}
           rows={6}
         />
-        <CharCounter id="message-counter" current={fields.message.length} max={MESSAGE_MAX} />
-        {errors.message && (
-          <span id="message-error" role="alert">
-            {errors.message}
-          </span>
-        )}
+        <div className="contact-form__message-footer">
+          {errors.message ? (
+            <span id="message-error" role="alert" className="contact-form__error">
+              {errors.message}
+            </span>
+          ) : (
+            <span />
+          )}
+          <CharCounter id="message-counter" current={fields.message.length} max={MESSAGE_MAX} />
+        </div>
       </div>
 
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Sending…' : 'Send Message'}
-      </button>
+      <div className="contact-form__actions">
+        <button className="contact-form__submit" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Sending…' : 'Send Message'}
+        </button>
+      </div>
     </form>
   )
 }
