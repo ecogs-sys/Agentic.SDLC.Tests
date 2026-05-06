@@ -34,7 +34,7 @@
     "STORY-010": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-011": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
     "STORY-012": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 },
-    "STORY-013": { "track": "react", "status": "pending", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
+    "STORY-013": { "track": "react", "status": "in_progress", "reviewer_iterations": 0, "test_reviewer_iterations": 0, "fix_iterations": 0 },
     "STORY-014": { "track": "react", "status": "complete", "reviewer_iterations": 1, "test_reviewer_iterations": 1, "fix_iterations": 0 }
   }
 }
